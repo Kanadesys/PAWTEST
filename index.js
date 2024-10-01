@@ -1,13 +1,13 @@
 const express = require("express") //Impor modul express
 const app = express() //Inisialisasi express
 const expressLayout = require("express-ejs-layouts"); //Import modul express-ejs-layouts
-const port = 3004
+const port = 3002
 
 app.set("views", __dirname + "/views");
 app.set('view engine', 'ejs');
 
 app.use(expressLayout);
-
+app.use(express.static('public'));
 //route
 app.get("/" ,(req,res) => {
     //res.send("hello");
@@ -31,14 +31,14 @@ app.get("/" ,(req,res) => {
 app.get("/about" ,(req,res) => {
     //res.send("about");
     //res.sendFile(__dirname + "/aboutus.html");
-    res.render("about", {title: 'About Us', layout: 'main'});
+    res.render('aboutus', {title: 'About Us', layout: 'main'});
 });
 
 // route kontak
 app.get("/contact" ,(req,res) => {
     //res.send("contact us");
     //res.sendFile(__dirname + "/contact.html");
-    res.render('contact');
+    res.render('contact', {title: 'Contact', layout: 'main'});
 });
 
 app.get("/mahasiswa", (req,res)=>{
@@ -107,4 +107,3 @@ app.use("/" ,(req,res) => {
 app.listen(port, ()=>{
     console.log(`server dapat di akses di http://localhost:${port}`);
 });
-
