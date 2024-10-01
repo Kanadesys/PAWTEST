@@ -1,7 +1,7 @@
 const express = require("express") //Impor modul express
 const app = express() //Inisialisasi express
 const expressLayout = require("express-ejs-layouts"); //Import modul express-ejs-layouts
-const port = 3003
+const port = 3004
 
 app.set("views", __dirname + "/views");
 app.set('view engine', 'ejs');
@@ -24,7 +24,7 @@ app.get("/" ,(req,res) => {
             isi: "Isi Berita 2"
         },
     ];
-    res.render('index', {title: 'Halaman Home', berita});
+    res.render('index', {title: 'Halaman Home', berita, layout: 'main'});
 });
 
 //route
@@ -95,7 +95,7 @@ app.get("/prodi" ,(req,res) => {
             singkatan: "AK"
         },
     ];
-    res.render('prodi', {title: 'Halaman Prodi', prodi});
+    res.render('prodi', {title: 'Halaman Prodi', prodi, layout: 'main'});
 });
 
 // handle route yang tidak terdaftar
